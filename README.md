@@ -13,8 +13,8 @@
 3) Segment Visitors by iterating through the dictionary and filter the visitors into respective age groups.
 4) Visualize the result using matplotlib.
 
-### Name: Manikandan R
-### Reg No: 212223230120
+### Name: Manikandan M
+### Reg No: 212224040183
 ### Program:
 ```python
 import pandas as pd
