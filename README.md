@@ -13,59 +13,42 @@
 3) Segment Visitors by iterating through the dictionary and filter the visitors into respective age groups.
 4) Visualize the result using matplotlib.
 
+### Name: Manikandan R
+### Reg No: 212223230120
 ### Program:
 ```python
 import pandas as pd
-
-# Read the CSV file into a DataFrame
-data = pd.read_csv('clustervisitor.csv')
-
-# Define age groups using a dictionary with Boolean conditions
-age_groups = {
-    '18-24': (data['Age'] >= 18) & (data['Age'] <= 24),
-    '25-34': (data['Age'] >= 25) & (data['Age'] <= 34),
-    '35-44': (data['Age'] >= 35) & (data['Age'] <= 44),
-    '45-54': (data['Age'] >= 45) & (data['Age'] <= 54),
-    '55-64': (data['Age'] >= 55) & (data['Age'] <= 64),
-    '65+': (data['Age'] >= 65)
-}
-
-# Segment visitors by iterating through the age groups and filter visitors into respective groups
-segmented_visitors = {
-    group: data[condition]
-    for group, condition in age_groups.items()
-}
-
-# Count the number of visitors in each age group
-visitor_counts = [
-    len(segmented_visitors[group])
-    for group in age_groups
-]
-
-# Define age group labels
-age_group_labels = list(age_groups.keys())
-
+df= pd.read_csv('/content/drive/MyDrive/Web Data MIning/clustervisitor.csv')
+print(df)
 ```
 ### Output:
-<img width="410" height="599" alt="image" src="https://github.com/user-attachments/assets/8fbba8ce-00ad-47c4-a169-8c4b1315bf48" />
 
+<img width="568" height="689" alt="image" src="https://github.com/user-attachments/assets/fc8615db-a6e3-4d18-a345-e4d0646602bf" />
 
 ### Visualization:
 ```python
-#import matplotlib.pyplot as plt
+cluster={"Young":(df['Age']<=30),"Middle":((df['Age']>30) & (df['Age']<=50)),"Old":(df['Age']>50)}
+count=[]
+for group,condition in cluster.items():
+  visitors=df[condition]
+  count.append(len(visitors))
+  print(f"The visitors on {group} are :")
+  print(visitors)
+  print("count=",len(visitors))
 
-# Plot a bar chart for visitor distribution across age groups
-plt.figure(figsize=(8, 6))
-plt.bar(age_group_labels, visitor_counts, color='skyblue')
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8,6))
+plt.bar(['Young','Middle','Old'],count,color="skyblue")
 plt.xlabel('Age Groups')
 plt.ylabel('Number of Visitors')
-plt.title('Visitor Distribution Across Age Groups')
+plt.title("Visitor Distribution Across Age Groups")
 plt.show()
 ```
 ### Output:
-<img width="798" height="595" alt="image" src="https://github.com/user-attachments/assets/6395478b-e553-4fd9-804e-e2a16fa2a286" />
+<img width="741" height="578" alt="image" src="https://github.com/user-attachments/assets/3c4db9a6-8db2-46c2-b185-9a475514b79b" />
 
-<img width="729" height="580" alt="image" src="https://github.com/user-attachments/assets/422e2226-082f-4f9c-a7be-bb505a8ac1b4" />
 
 ### Result:
 Thus, visitor segmentation based on age groups was successfully done using Python.
+
+
